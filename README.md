@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 # News Feed React Application
 
 This Next.js-based web application acts as news articles feed from various sources, allowing users to search, filter, and view articles from multiple set news providers.
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Live Demo
 
@@ -23,9 +23,8 @@ You can view the live application at: [news-feed-react.vercel.app](https://news-
 - [Folder Structure](#folder-structure)
 - [Environment Variables](#environment-variables)
 - [Troubleshooting](#troubleshooting)
-- [Important Note on API Request Restrictions](#important-note-on-api-request-restrictions)
 - [Contributing](#contributing)
-- [License](#license)
+- [Learn More](#learn-more)
 
 ## Project Overview
 

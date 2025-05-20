@@ -10,7 +10,7 @@ This app is deployed on the [Vercel Platform](https://vercel.com/new?utm_medium=
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-You can view the live application at: [news-feed-react.vercel.app](https://news-feed-react.vercel.app)
+You can view the live application at: [news-feed-react.vercel.app](https://news-feed-react-56ifaeb6k-blasus-projects.vercel.app/)
 
 ## Table of Contents
 
@@ -64,8 +64,8 @@ To set up the project locally:
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/muhammadshiraz/news-aggregator.git
-   cd news-aggregator
+   git clone https://github.com/blasus/news-feed-react.git
+   cd news-feed-react
    ```
 
 2. **Install Dependencies**:

@@ -1,6 +1,21 @@
 import { FetchNewsApiFn } from "../model/apis";
 import { Article } from "../model/feed";
 
+type NYTIMEAPIMultimedia = {
+  default: { url: string };
+  thumbnail: { url: string };
+  caption: string;
+}
+
+type NYTimesAPIItem = {
+  multimedia: NYTIMEAPIMultimedia;
+  headline: { main: string; };
+  abstract: string;
+  web_url: string;
+  pub_date: string;
+  section_name: string;
+}
+
 const BASE_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
 export const fetchNYTimesArticles: FetchNewsApiFn = async (query: string, date: string, category: string) => {
@@ -23,7 +38,7 @@ export const fetchNYTimesArticles: FetchNewsApiFn = async (query: string, date: 
 
     const body = await response.json();
 
-    return body.response.docs.map((item) => {
+    return body.response.docs.map((item: NYTimesAPIItem) => {
 
       const image = item.multimedia;
 
@@ -42,7 +57,9 @@ export const fetchNYTimesArticles: FetchNewsApiFn = async (query: string, date: 
     }
   );
 
-  } catch (error) {    
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {  
+
     if (error.response) {
       console.error(
         `Error fetching NY Times articles: ${error.response.status} - ${error.response.statusText}`

@@ -1,5 +1,14 @@
 import { FetchNewsApiFn } from "../model/apis";
 
+type GNewsAPIItem = {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  publishedAt: string;
+  source: { name: string; };
+}
+
 const SEARCH_BASE_URL = 'https://gnews.io/api/v4/search';
 const HEADLINE_URL = 'https://gnews.io/api/v4/top-headlines';
 
@@ -22,7 +31,7 @@ export const fetchNewsAPIArticles: FetchNewsApiFn = async (query: string, date: 
     
     if (response.ok && body.articles.length > 0) {
       
-      return body.articles.map((item) => ({
+      return body.articles.map((item: GNewsAPIItem) => ({
         title: item.title,
         description: item.description,
         url: item.url,
@@ -38,7 +47,8 @@ export const fetchNewsAPIArticles: FetchNewsApiFn = async (query: string, date: 
       return [];
     }
 
-  } catch (error) {    
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {    
     console.error(
       "Error fetching GNewsAPI articles:",
       error.response ? error.response.data : error.message

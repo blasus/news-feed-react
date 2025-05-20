@@ -1,6 +1,25 @@
 import { FetchNewsApiFn } from "../model/apis";
 import { Article } from "../model/feed";
 
+type GuardianAPIAsset = {
+  file: string;
+  typeData: { altText?: string }
+}
+
+type GuardianAPIElement = {
+  type: string;
+  assets: GuardianAPIAsset[]
+}
+
+type GuardianAPIItem = {
+  elements: GuardianAPIElement[];
+  fields: { trailText: string; };
+  webTitle: string;
+  sectionName: string;
+  webUrl: string;
+  webPublicationDate: string;
+}
+
 const BASE_URL = "https://content.guardianapis.com/search";
 
 export const fetchGuardianArticles: FetchNewsApiFn = async (query: string, date: string, category: string) => {
@@ -30,7 +49,7 @@ export const fetchGuardianArticles: FetchNewsApiFn = async (query: string, date:
 
     const body = await response.json();
 
-    return body.response.results.map((item) => {      
+    return body.response.results.map((item: GuardianAPIItem) => {      
       const imageElement = item.elements?.find(
         (element) => element.type === "image"
       );
@@ -54,7 +73,9 @@ export const fetchGuardianArticles: FetchNewsApiFn = async (query: string, date:
     });
     
   } catch (error) {
+
     console.error("Error fetching Guardian articles:", error);
+    
     return [];
   }
 };

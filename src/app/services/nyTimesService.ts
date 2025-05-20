@@ -1,8 +1,9 @@
+import { FetchNewsApiFn } from "../model/apis";
 import { Article } from "../model/feed";
 
 const BASE_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
-export const fetchNYTimesArticles = async (query: string, date: string, category: string) => {
+export const fetchNYTimesArticles: FetchNewsApiFn = async (query: string, date: string, category: string) => {
   
   const url = new URL(BASE_URL);
 
@@ -46,9 +47,11 @@ export const fetchNYTimesArticles = async (query: string, date: string, category
       console.error(
         `Error fetching NY Times articles: ${error.response.status} - ${error.response.statusText}`
       );
+
     } else {
       console.error("Error fetching NY Times articles:", error.message);
     }
+    
     return [];
   }
 };

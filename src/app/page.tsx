@@ -26,7 +26,7 @@ export default function Home() {
 
       try {
 
-        let newsArticles = [];
+        let newsArticles: Article[] = [];
 
         if (filters.source === "newsapi") {
           // Fetch only CNN Articles
@@ -54,9 +54,9 @@ export default function Home() {
 
         } else {
           // Fetch articles from all sources for the initial load
-          const cnnArticles: Article[] = await fetchNewsAPIArticles(filters.query, filters.date, filters.category);
-          const guardianArticles: Article[] = await fetchGuardianArticles(filters.query, filters.date, filters.category);
-          const nyTimesArticles: Article[] = await fetchNYTimesArticles(filters.query, filters.date, filters.category);
+          const cnnArticles = await fetchNewsAPIArticles(filters.query, filters.date, filters.category);
+          const guardianArticles = await fetchGuardianArticles(filters.query, filters.date, filters.category);
+          const nyTimesArticles = await fetchNYTimesArticles(filters.query, filters.date, filters.category);
 
           newsArticles = [
             ...cnnArticles,

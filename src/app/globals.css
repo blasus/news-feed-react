@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --heading-color: #444;
+  --card-background: #fff;
+  --font-color: #666;
+  --link-color: #007bff;
+  --border-color: #ddd;
+  --spinner-color: #3498db;
 }
 
 @theme inline {
@@ -12,19 +18,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --heading-color: #ededed;
+    --card-background: #5c5c5c;
+    --font-color: #E8E8E8;
+    --link-color: lightskyblue;
+    --spinner-color: var(--link-color);
   }
-} */
+}
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -32,18 +43,17 @@ body {
 .home {
   min-height: 100vh;
   padding: 20px;
-  background-color: #f4f7f6;
-  font-family: 'Arial', sans-serif;
 }
 
 .article-sections {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: var(--background);
 }
 
 h2 {
-  color: #444;
+  color: var(--heading-color);
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
@@ -70,7 +80,7 @@ h2 {
 
 .loading-spinner {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+  border-top: 8px solid var(--spinner-color);
   border-radius: 50%;
   width: 50px;
   height: 50px;

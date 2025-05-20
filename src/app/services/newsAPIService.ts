@@ -1,7 +1,9 @@
+import { FetchNewsApiFn } from "../model/apis";
+
 const SEARCH_BASE_URL = 'https://gnews.io/api/v4/search';
 const HEADLINE_URL = 'https://gnews.io/api/v4/top-headlines';
 
-export const fetchNewsAPIArticles = async (query: string, date: string, category: string) => {
+export const fetchNewsAPIArticles: FetchNewsApiFn = async (query: string, date: string, category: string) => {
   
   const url = new URL(query ? SEARCH_BASE_URL : HEADLINE_URL);
 
@@ -10,7 +12,6 @@ export const fetchNewsAPIArticles = async (query: string, date: string, category
   params.append('category', category || '');
   params.append('lang', 'en');
   params.append('apikey', process.env.NEXT_PUBLIC_REACT_APP_NEWS_API_KEY!);
-  params.append('language', 'en');
   if (date) {
     params.append('from', date);
   }
@@ -33,11 +34,16 @@ export const fetchNewsAPIArticles = async (query: string, date: string, category
 
     } else {
       console.warn("No articles found for the provided query, date, or category.");
+
       return [];
     }
 
   } catch (error) {    
-    console.error("Error fetching NewsAPI articles:", error.response ? error.response.data : error.message);
+    console.error(
+      "Error fetching GNewsAPI articles:",
+      error.response ? error.response.data : error.message
+    );
+
     return [];
   }
 };

@@ -1,8 +1,9 @@
+import { FetchNewsApiFn } from "../model/apis";
 import { Article } from "../model/feed";
 
 const BASE_URL = "https://content.guardianapis.com/search";
 
-export const fetchGuardianArticles = async (query: string, date: string, category: string) => {
+export const fetchGuardianArticles: FetchNewsApiFn = async (query: string, date: string, category: string) => {
   
   const url = new URL(BASE_URL);
 

@@ -21,7 +21,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
       <a href={article.url} target='_blank' rel='noopener noreferrer'>
         Read More
       </a>
-      <p>Source: {article.source} - {article.section}</p>
+      <p>Source: {article.source} {article.section && `- ${article.section}`}</p>
       <p>Published At: {new Date(article.publishedAt).toLocaleDateString()}</p>
     </div>
   );
